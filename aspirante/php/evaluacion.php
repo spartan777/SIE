@@ -9,22 +9,27 @@ $res = mysqli_fetch_array($ans);
 $fecha = date("Y-m-d");
 $inicio = $res["F_Inicio"];
 $fin = $res["F_Final"];
-// Specify the start date. This date can be any English textual format  
-$date_from = $inicio;   
-$date_from = strtotime($date_from); // Convert date to a UNIX timestamp  
-// Specify the end date. This date can be any English textual format  
-$date_to = $fin;  
-$date_to = strtotime($date_to); // Convert date to a UNIX timestamp  
+// Specify the start date. This date can be any English textual format
+$date_from = $inicio;
+$date_from = strtotime($date_from); // Convert date to a UNIX timestamp
+// Specify the end date. This date can be any English textual format
+$date_to = $fin;
+$date_to = strtotime($date_to); // Convert date to a UNIX timestamp
 //create array
 $calendario = array();
-// Loop from the start date to end date and place all dates in array  
-for ($i=$date_from; $i<=$date_to; $i+=86400) {  
+// Loop from the start date to end date and place all dates in array
+for ($i=$date_from; $i<=$date_to; $i+=86400) {
 	$date = date("Y-m-d", $i);
     $calendario[] = $date;
     //echo $date."<br>";
-}  
+}
 if (in_array($fecha, $calendario)) {
-  echo "existe la fecha";
+	if($opcion == 'pre-inscripcion'){
+		header("location:../home.php?op=generales");
+	}elseif ($opcion == 'inscripcion') {
+		header("location:../../inscripciones/home.php?op=busqueda");
+	}
+
 }else{
 
   $contexto = "1";
