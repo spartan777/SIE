@@ -156,3 +156,143 @@ Nombre VARCHAR (15) NOT NULL,
 F_Inicio DATE NOT NULL,
 F_Final DATE NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--Tablas de aspirantes
+CREATE TABLE `aspirantes_datos_contacto` (
+  `id_aspirante` int(11) NOT NULL,
+  `persona_contacto` varchar(50) NOT NULL,
+  `domicilio_distinto` varchar(3) NOT NULL,
+  `calle` varchar(50) NOT NULL,
+  `numero` varchar(5) NOT NULL,
+  `colonia` varchar(40) NOT NULL,
+  `cp` int(5) NOT NULL,
+  `municipio` varchar(50) NOT NULL,
+  `estado` varchar(35) NOT NULL,
+  `telefono` varchar(11) NOT NULL,
+  `lugar_trabajo` varchar(50) NOT NULL,
+  `telefono_trabajo` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `aspirantes_datos_generales`
+--
+
+CREATE TABLE `aspirantes_datos_generales` (
+  `id_aspirante` int(11) NOT NULL,
+  `nombre` varchar(30) NOT NULL,
+  `paterno` varchar(30) NOT NULL,
+  `materno` varchar(30) NOT NULL,
+  `fecha_nacimiento` date NOT NULL,
+  `edad` int(3) NOT NULL,
+  `nacionalidad` varchar(11) NOT NULL,
+  `otra_nacionalidad` varchar(15) NOT NULL,
+  `id_carrera_1` varchar(5) NOT NULL,
+  `id_carrera_2` varchar(5) NOT NULL,
+  `escuela_procedencia` varchar(50) NOT NULL,
+  `tipo_escuela` varchar(8) NOT NULL,
+  `anio_egreso` int(4) NOT NULL,
+  `promedio` varchar(4) NOT NULL,
+  `secundaria_estudio` varchar(50) NOT NULL,
+  `promedio_secundaria` varchar(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `aspirantes_socioeconomicos`
+--
+
+CREATE TABLE `aspirantes_socioeconomicos` (
+  `id_aspirante` int(11) NOT NULL,
+  `nivel_estudios_padre` varchar(33) NOT NULL,
+  `nivel_estudios_madre` varchar(33) NOT NULL,
+  `vivienda_actual` varchar(15) NOT NULL,
+  `vivienda_actual_especifique` varchar(30) NOT NULL,
+  `ingresos_padre` varchar(6) NOT NULL,
+  `ingresos_madre` varchar(6) NOT NULL,
+  `ingresos_hermanos` varchar(6) NOT NULL,
+  `ingresos_propio` varchar(6) NOT NULL,
+  `ingresos_otros` varchar(6) NOT NULL,
+  `ocupacion_padre` varchar(20) NOT NULL,
+  `ocupacion_padre_especifique` varchar(50) NOT NULL,
+  `ocupacion_madre` varchar(20) NOT NULL,
+  `ocupacion_madre_especifique` varchar(50) NOT NULL,
+  `dependencia_economica` varchar(15) NOT NULL,
+  `vivienda_es` varchar(10) NOT NULL,
+  `cuartos_casa` varchar(3) NOT NULL,
+  `cuantos_viven_casa` varchar(3) NOT NULL,
+  `personas_dependientes` varchar(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `aspirante_datos_domicilio`
+--
+
+CREATE TABLE `aspirante_datos_domicilio` (
+  `id_aspirante` int(11) NOT NULL,
+  `calle` varchar(50) NOT NULL,
+  `estado` varchar(35) NOT NULL,
+  `municipio` varchar(50) NOT NULL,
+  `cp` int(5) NOT NULL,
+  `colonia` varchar(40) NOT NULL,
+  `correo` varchar(50) NOT NULL,
+  `telefono` varchar(11) NOT NULL,
+  `estado_civil` varchar(12) NOT NULL,
+  `capacidad_diferente` varchar(11) NOT NULL,
+  `especifique_capacidad` varchar(20) NOT NULL,
+  `beca` varchar(3) NOT NULL,
+  `especifique_beca` varchar(20) NOT NULL,
+  `zona_procedencia` varchar(17) NOT NULL,
+  `especifique_zona` varchar(20) NOT NULL,
+  `oportunidades` varchar(3) NOT NULL,
+  `nombre_padre` varchar(30) NOT NULL,
+  `paterno_padre` varchar(30) NOT NULL,
+  `materno_padre` varchar(30) NOT NULL,
+  `vive_padre` varchar(3) NOT NULL,
+  `nombre_madre` varchar(30) NOT NULL,
+  `paterno_madre` varchar(30) NOT NULL,
+  `materno_madre` varchar(30) NOT NULL,
+  `vive_madre` varchar(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `aspirantes_datos_contacto`
+--
+ALTER TABLE `aspirantes_datos_contacto`
+  ADD PRIMARY KEY (`id_aspirante`);
+
+--
+-- Indices de la tabla `aspirantes_datos_generales`
+--
+ALTER TABLE `aspirantes_datos_generales`
+  ADD PRIMARY KEY (`id_aspirante`);
+
+--
+-- Indices de la tabla `aspirantes_socioeconomicos`
+--
+ALTER TABLE `aspirantes_socioeconomicos`
+  ADD PRIMARY KEY (`id_aspirante`);
+
+--
+-- Indices de la tabla `aspirante_datos_domicilio`
+--
+ALTER TABLE `aspirante_datos_domicilio`
+  ADD PRIMARY KEY (`id_aspirante`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `aspirantes_datos_generales`
+--
+ALTER TABLE `aspirantes_datos_generales`
+  MODIFY `id_aspirante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;COMMIT;
