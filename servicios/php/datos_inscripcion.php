@@ -3,6 +3,7 @@
 $context = $_GET["context"];
 include ("../conexion.php");
 $id = $_GET["id"];
+$no_control = $_GET["no_control"];
 /*$opcion = $_GET["opcion"];
 $inicio = $_GET["inicio"];
 $fin = $_GET["fin"];*/
@@ -31,14 +32,16 @@ while ($res = mysqli_fetch_array($ans)) {
     $cpTutor = $res['cp_tutor'];
   }
 ?>
-<script type="text/javascript">var con = "<?php echo $context;?>"; var opcion = "<?php echo $opcion;?>"; var inicio = "<?php echo $inicio;?>"; var fin = "<?php echo $fin;?>";</script>
+<script type="text/javascript">var con = "<?php echo $context;?>"; var nocontrol = "<?php echo $no_control; ?>"; var id = "<?php echo $id;?>"; var inicio = "<?php echo $inicio;?>"; var fin = "<?php echo $fin;?>";</script>
 <div class="main">
-	<p class="alt-sub">Datos del Alumno!</p>
+	<p class="alt-sub">Proceso de Inscripción!</p>
   <div>
 		<p id="contexto" class="contexto"></p>
+    <a style="color:black;" role="button" id="download-file" href="">Descargar formato</a>
 	</div>
 	<hr class="cont-div">
-	<form class="form-asp" action="php/save_datos.php" method="POST"><!--formulario de salida para el flujo de los aspirantes-->
+	<form class="form-asp" action="php/save_datos_inscripcion.php" method="POST"><!--formulario de salida para el flujo de los aspirantes-->
+    <label>Datos del Alumno</label><br>
     <label>Nombre:</label><br>
     <input class="in-inp" type="text" name="nombre" maxlength="30" value="<?php echo $res["nombre"]; ?>" required></input><br>
     <label>Apellido Paterno:</label><br>
@@ -105,6 +108,42 @@ while ($res = mysqli_fetch_array($ans)) {
 			<option value="1" <?php if($res["id_carrera_1"] == "1"){echo "selected"; } ?>>Informática</option>
 			<option value="2" <?php if($res["id_carrera_1"] == "2"){echo "selected"; } ?>>Sistemas</option>
 	  </select><br>
+    <label>Servicios Escolares</label><br>
+    <table align="center">
+      <tr>
+        <th>Documentos Entregados</th>
+      </tr>
+      <tr>
+        <td align="left"><input type="checkbox" name="acta_nacimiento" value="si"> Acta de nacimiento</td>
+      </tr>
+      <tr>
+        <td align="left"><input type="checkbox" name="certificado_secundaria" value="si"> Certificado de secundaria</td>
+      </tr>
+      <tr>
+        <td align="left"><input type="checkbox" name="buena_conducta" value="si"> Carta de buena conducta</td>
+      </tr>
+      <tr>
+        <td align="left"><input type="checkbox" name="certificado_bachillerato" value="si"> Certificado de bachillerato o equivalente</td>
+      </tr>
+      <tr>
+        <td align="left"><input type="checkbox" name="curp" value="si"> CURP</td>
+      </tr>
+      <tr>
+        <td align="left"><input type="checkbox" name="fotografias" value="si"> 6 fotografías tamaño infantil</td>
+      </tr>
+      <tr>
+        <td align="left"><input type="checkbox" name="dictamen_revalidacion" value="si"> Dictamen de revalidación o equivalente de estudios</td>
+      </tr>
+      <tr>
+        <td align="left"><input type="checkbox" name="forma_fm" value="si"> Copia de forma FM 9 (en caso de ser extranjero)</td>
+      </tr>
+      <tr>
+        <td align="left"><input type="checkbox" name="cuota" value="si"> Copia de comprobante de cuota por concepto de inscripción</td>
+      </tr>
+      <tr>
+        <td align="left"><input type="checkbox" name="certificado_medico" value="si"> Certificado médico</td>
+      </tr>
+    </table>
 
     <input type="hidden" id="id" name="id" value="<?php echo $id; ?>">
     <input type="hidden" id="domicilio_distinto" name="domicilio_distinto" value="<?php echo $res["domicilio_distinto"]; ?>">

@@ -16,9 +16,11 @@ function contexto()
 		break;
 
 		case "success":
-		con = "Proceso completo! Favor de dirigirse a Servicios Escolares.";
+		con = "Proceso completo! El Número de Control del alumno es: ".concat(nocontrol);
 		document.getElementById("contexto").style.backgroundColor = "rgb(85, 255, 85)";
 		document.getElementById("submit-form").disabled = true;
+		document.getElementById("download-file").style.display = 'visible';
+		document.getElementById("download-file").href = "php/downloadarchivo.php?id=".concat(id);
 		return con;
 		break;
 
@@ -28,8 +30,32 @@ function contexto()
 		return con;
 		break;
 
+		case "error-inscripcion":
+		con = "Ocurrió un error al guardar la información de la inscripción!";
+		document.getElementById("contexto").style.backgroundColor = "rgb(255, 127, 42)";
+		return con;
+		break;
+		case "error-update":
+		con = "Ocurrió un error al guardar la información del No. de Control!";
+		document.getElementById("contexto").style.backgroundColor = "rgb(255, 127, 42)";
+		return con;
+		break;
+		case "error-documentos":
+		con = "Ocurrió un error al guardar la información de los documentos!";
+		document.getElementById("contexto").style.backgroundColor = "rgb(255, 127, 42)";
+		return con;
+		break;
+
+		case "inscrito":
+		con = "El aspirante ya se encuentra inscrito. Favor de validar!";
+		document.getElementById("contexto").style.backgroundColor = "rgb(255, 127, 42)";
+		document.getElementById("submit-form").disabled = true;
+		return con;
+		break;
+
 		default:
 		con = "";
+		document.getElementById("download-file").style.display = 'none';
 		return con;
 		break;
 	}

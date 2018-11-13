@@ -10,7 +10,7 @@ $fin = $_GET["fin"];*/
 <div class="main">
 	<p class="alt-sub">Búsqueda de Alumnos!</p>
 	<hr class="cont-div">
-	<form class="form-asp" action="home.php?op=busqueda" method="POST"><!--formulario de salida para el flujo de los aspirantes-->
+	<form class="form-asp" action="home.php?op=inscripcion" method="POST"><!--formulario de salida para el flujo de los aspirantes-->
     <label>Nombre:</label><br>
     <input class="in-inp" type="text" name="nombre" maxlength="30" value="<?php echo isset($_POST["nombre"]) ? $_POST["nombre"]:""; ?>" required></input><br>
     <label>Apellido Paterno:</label><br>
@@ -52,7 +52,7 @@ $fin = $_GET["fin"];*/
           <td><?php echo $res["materno"]; ?></td>
           <td><?php echo $res["fecha_nacimiento"]; ?></td>
           <td><?php echo $res["escuela_procedencia"]; ?></td>
-          <td><a style="color:black;" href="home.php?op=datos&id=<?php echo $res["id_aspirante"]; ?>">Siguiente</a></td>
+          <td><a style="color:black;" href="home.php?op=datos_inscripcion&id=<?php echo $res["id_aspirante"]; ?>">Siguiente</a></td>
         </tr>
       <?php } } else {  ?>
 				<tr>
